@@ -36,6 +36,9 @@ export default function usePagination({
   totalPage = 10,
 }): PaginationHooksOutput {
   const [currentPage, setCurrentPage] = useState(page)
+
+  useMemo(() => setCurrentPage(page), [page])
+
   const pages = useMemo(
     () =>
       Array(totalPage)
