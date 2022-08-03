@@ -1,5 +1,7 @@
 export type UserListParamsType = {
-  gender?: "male" | "female"
+  gender?: GenderType
   results?: string
   page?: string
 }
+
+export type GenderType = "male" | "female" | ""
