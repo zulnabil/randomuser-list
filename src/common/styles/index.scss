@@ -1,0 +1,8 @@
+@import-normalize;
+@import "import.scss";
+@import "animation/index.scss";
+@import "helper/index.scss";
+
+body {
+  @include font-face($font-primary, blackSoft, 14px);
+}

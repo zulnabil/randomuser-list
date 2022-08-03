@@ -1,0 +1,51 @@
+@keyframes spinner-primary {
+  0% {
+    stroke: lighten(get-color(primary100), 40);
+    stroke-dashoffset: 0;
+  }
+
+  11% {
+    stroke: lighten(get-color(primary100), 30);
+    stroke-dashoffset: -66;
+  }
+
+  22% {
+    stroke: lighten(get-color(primary100), 20);
+    stroke-dashoffset: -133;
+  }
+
+  33% {
+    stroke: lighten(get-color(primary100), 10);
+    stroke-dashoffset: -200;
+  }
+
+  44% {
+    stroke: get-color(primary100);
+    stroke-dashoffset: -266;
+  }
+
+  55% {
+    stroke: get-color(primary100);
+    stroke-dashoffset: -333;
+  }
+
+  66% {
+    stroke: lighten(get-color(primary100), 10);
+    stroke-dashoffset: -400;
+  }
+
+  77% {
+    stroke: get-color(primary100);
+    stroke-dashoffset: -466;
+  }
+
+  88% {
+    stroke: lighten(get-color(primary100), 30);
+    stroke-dashoffset: -533;
+  }
+
+  100% {
+    stroke: lighten(get-color(primary100), 40);
+    stroke-dashoffset: -600;
+  }
+}

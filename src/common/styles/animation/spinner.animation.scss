@@ -1,0 +1,41 @@
+@keyframes loading-circle {
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  11% {
+    stroke-dashoffset: -66;
+  }
+
+  22% {
+    stroke-dashoffset: -133;
+  }
+
+  33% {
+    stroke-dashoffset: -200;
+  }
+
+  44% {
+    stroke-dashoffset: -266;
+  }
+
+  55% {
+    stroke-dashoffset: -333;
+  }
+
+  66% {
+    stroke-dashoffset: -400;
+  }
+
+  77% {
+    stroke-dashoffset: -466;
+  }
+
+  88% {
+    stroke-dashoffset: -533;
+  }
+
+  100% {
+    stroke-dashoffset: -600;
+  }
+}

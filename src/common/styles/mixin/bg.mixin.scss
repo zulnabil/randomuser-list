@@ -1,0 +1,37 @@
+/**
+ * Background Mixin
+ */
+
+@mixin bg-img($url, $position: center, $repeat: no-repeat, $size: cover) {
+  background-image: url($url);
+  background-position: $position;
+  background-repeat: $repeat;
+  background-size: $size;
+}
+
+@mixin bg-color($color) {
+  background-color: get-color($color);
+}
+
+@mixin no-bg() {
+  background: none;
+}
+
+@mixin gradient($direction, $color-1, $color-2) {
+  background: linear-gradient(
+    $direction,
+    get-color($color-1),
+    get-color($color-2)
+  );
+  background-repeat: repeat-x;
+}
+
+@mixin gradient-multi($direction, $color-stops...) {
+  @if is-direction($direction) == false {
+    $color-stops: ($direction, $color-stops);
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: linear-gradient($direction, $color-stops);
+}

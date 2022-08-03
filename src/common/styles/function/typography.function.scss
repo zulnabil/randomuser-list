@@ -1,0 +1,23 @@
+@function text-size($size) {
+  @if map_has_key($font-sizes, $size) {
+    @return map_get($font-sizes, $size);
+  }
+
+  @return $size;
+}
+
+@function text-weight($size) {
+  @if map_has_key($font-weights, $size) {
+    @return map_get($font-weights, $size);
+  }
+
+  @return $size;
+}
+
+@mixin line-height($height) {
+  line-height: $height + px;
+}
+
+@mixin letter-spacing($range) {
+  letter-spacing: $range + px;
+}

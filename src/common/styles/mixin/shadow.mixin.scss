@@ -1,0 +1,27 @@
+/**
+ * Box Shadow Mixin
+ */
+
+@mixin shadow($template) {
+  box-shadow: get-shadow($template);
+}
+
+@mixin shadow-multi($args...) {
+  box-shadow: $args;
+}
+
+@mixin no-shadow() {
+  box-shadow: initial;
+}
+
+/**
+* Text Shadow Mixin
+*/
+
+@mixin text-shadow($args...) {
+  text-shadow: $args;
+}
+
+@mixin no-text-shadow() {
+  @include text-shadow(initial);
+}
