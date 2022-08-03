@@ -1,0 +1,71 @@
+@import "common/styles/import.scss";
+
+.ui-button {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4px 10px;
+  flex-shrink: 0;
+
+  @include bg-color(white);
+  @include rounded(4px);
+  @include shadow(elevate-sm);
+
+  > span {
+    margin: auto;
+  }
+
+  &--size-small {
+    @include font-size(xs);
+  }
+
+  &--size-medium {
+    @include font-size(sm);
+  }
+
+  &--size-large {
+    padding: 7px 14px;
+
+    @include font-size(md);
+  }
+
+  &--theme-primary {
+    color: white;
+
+    @include bg-color(primary100);
+
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+
+  &--theme-secondary {
+    color: get-color(blackSoft);
+
+    @include bg-color(white);
+
+    &:hover {
+      @include bg-color(background);
+    }
+
+    &:active {
+      @include bg-color(greyLight);
+    }
+  }
+
+  &--variant-text {
+    color: get-color(blackSoft);
+
+    @include bg-color(transparent);
+    @include shadow(unset);
+
+    &:hover {
+      @include bg-color(greyLight);
+    }
+
+    &:active {
+      @include bg-color(greyLight);
+    }
+  }
+}

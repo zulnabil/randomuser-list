@@ -1,0 +1,10 @@
+@import "common/styles/import.scss";
+
+.ui-card {
+  padding: 16px 20px;
+  margin-bottom: 1rem;
+
+  @include bg-color(white);
+  @include rounded(0.5rem);
+  @include shadow(elevate-xs);
+}
