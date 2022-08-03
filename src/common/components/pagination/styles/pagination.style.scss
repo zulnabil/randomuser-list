@@ -1,0 +1,30 @@
+@import "common/styles/import.scss";
+
+.ui-pagination {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem auto;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+
+    @include font-color(blackSoft);
+    @include font-size(sm);
+    @include no-bg;
+    @include no-border;
+    @include rounded(100px);
+
+    &:hover {
+      @include bg-color(greyLight);
+    }
+
+    &[data-active="true"] {
+      @include bg-color(primary200);
+      @include font-color(white);
+    }
+  }
+}
