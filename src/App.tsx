@@ -1,11 +1,19 @@
+import fetcher from "common/libs/fetch.lib"
 import DashboardPage from "pages/dashboard.page"
+import { SWRConfig } from "swr"
 import "./common/styles/index.scss"
 
 function App() {
   return (
-    <div className="App">
-      <DashboardPage />
-    </div>
+    <SWRConfig
+      value={{
+        fetcher,
+      }}
+    >
+      <div className="App">
+        <DashboardPage />
+      </div>
+    </SWRConfig>
   )
 }
 
