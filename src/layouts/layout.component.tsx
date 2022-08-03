@@ -8,7 +8,7 @@ const LayoutComponent: FC<LayoutProps> = ({ children }) => {
   return (
     <main className="ui-layout background">
       <HeaderLayout />
-      <div className="ui-layout__body container container--full flex flex-align-start">
+      <div className="ui-layout__body container container--full">
         {children}
       </div>
     </main>
