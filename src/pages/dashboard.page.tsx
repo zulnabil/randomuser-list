@@ -1,9 +1,10 @@
 import LayoutComponent from "layouts/layout.component"
+import UserListContainer from "modules/user-list/containers/user-list.container"
 
 const DashboardPage = () => {
   return (
     <LayoutComponent>
-      <div className="ui-page">Dashboard page</div>
+      <UserListContainer />
     </LayoutComponent>
   )
 }
