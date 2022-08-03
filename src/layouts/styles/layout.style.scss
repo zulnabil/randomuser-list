@@ -1,0 +1,11 @@
+.ui-layout {
+  &__body {
+    gap: 32px;
+    padding: 1rem 0;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+}

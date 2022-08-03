@@ -1,0 +1,20 @@
+@import "common/styles/import.scss";
+
+.header-layout {
+  height: 60px;
+  top: 0;
+  left: 0;
+
+  @include bg-color(white);
+  @include border(right, 1px, solid, get-color(greyLight));
+  @include shadow(default-1);
+
+  &__content {
+    height: 100%;
+  }
+
+  .ui-dialog {
+    height: 100%;
+    width: 60vw;
+  }
+}
