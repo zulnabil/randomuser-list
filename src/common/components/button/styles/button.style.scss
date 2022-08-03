@@ -33,7 +33,7 @@
   &--theme-primary {
     color: white;
 
-    @include bg-color(primary100);
+    @include bg-color(primary200);
 
     &:hover {
       filter: brightness(0.95);
