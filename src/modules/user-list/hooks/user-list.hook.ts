@@ -10,6 +10,7 @@ export default function useUserList(
   const params = {
     ...defaultParams,
     ...initialParams,
+    ...(initialParams?.gender && { seed: "" }),
   }
   const searchParams = new URLSearchParams(params as Record<string, string>)
 
