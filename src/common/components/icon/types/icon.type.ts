@@ -2,6 +2,7 @@ import { ColorInterface } from "../../../types/common.type"
 
 export type IconProps = ColorInterface & {
   children: string
+  className?: string
   size?: number
 }
 

@@ -7,6 +7,7 @@ import THEME_COLORS from "common/constants/color.constant"
 
 const IconComponent: FC<IconProps> = ({
   children,
+  className,
   color = THEME_COLORS["blackSoft"],
   size = 14,
 }) => {
@@ -31,6 +32,7 @@ const IconComponent: FC<IconProps> = ({
 
   return createElement("svg", {
     children: renderSvg(),
+    className,
     height: `${size}px`,
     viewBox,
     width: `${size}px`,
