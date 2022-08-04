@@ -1,9 +1,14 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import CardComponent from "common/components/card/card.component"
-import { TableProps } from "common/components/table/types/table.type"
+import {
+  TableHeadingProps,
+  TableProps,
+} from "common/components/table/types/table.type"
 
 import "./styles/table.style.scss"
 import ShimmerComponent from "common/components/shimmer/shimmer.component"
+import IconComponent from "common/components/icon/icon.component"
+import { objToString } from "common/helper/string.helper"
 
 /**
  * Table Component
@@ -15,6 +20,7 @@ const TableComponent: FC<TableProps> = ({
   rows,
   isLoading,
   rowCount,
+  onChangeSort,
 }) => {
   if (isLoading) {
     return (
@@ -47,7 +53,12 @@ const TableComponent: FC<TableProps> = ({
         <thead>
           <tr>
             {columns.map(({ key, label }, index) => (
-              <th key={`th-${key}-${index}`}>{label}</th>
+              <TableHeading
+                key={`th-${key}-${index}`}
+                name={key}
+                label={label}
+                onChangeSort={onChangeSort}
+              />
             ))}
           </tr>
         </thead>
@@ -62,6 +73,39 @@ const TableComponent: FC<TableProps> = ({
         </tbody>
       </table>
     </CardComponent>
+  )
+}
+
+const TableHeading: FC<TableHeadingProps> = ({
+  name,
+  label,
+  sortAsc = true,
+  onChangeSort,
+}) => {
+  const [isSortAsc, setSortAsc] = useState(sortAsc)
+
+  const className = {
+    "icon-sort-asc": isSortAsc,
+    "icon-sort-desc": !isSortAsc,
+  }
+
+  const handleClickSort = () => {
+    setSortAsc((prev) => !prev)
+    onChangeSort && name && onChangeSort(name, isSortAsc ? "desc" : "asc")
+  }
+
+  return (
+    <th onClick={handleClickSort}>
+      {label}
+      &nbsp;
+      <IconComponent
+        className={objToString(className)}
+        color="blackSoft"
+        size={16}
+      >
+        chevron-down
+      </IconComponent>
+    </th>
   )
 }
 
