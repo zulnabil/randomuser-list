@@ -1,9 +1,17 @@
+import { SortType } from "common/components/table/types/table.type"
+
+export const defaultSort: SortType = {
+  sortBy: "username",
+  sortOrder: "noOrder",
+}
+
 export const defaultParams = {
   gender: "",
   results: "10",
   seed: "ajaib",
   nat: "us",
   page: "1",
+  ...defaultSort,
 }
 
 export const DEFAULT_LIMIT_PER_PAGE = 10

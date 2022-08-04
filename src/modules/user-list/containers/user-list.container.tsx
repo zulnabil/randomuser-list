@@ -4,6 +4,7 @@ import PaginationComponent from "common/components/pagination/pagination.compone
 import TableComponent from "common/components/table/table.component"
 import {
   COLUMNS,
+  defaultSort,
   DEFAULT_LIMIT_PER_PAGE,
   DEFAULT_TOTAL_PAGE,
 } from "modules/user-list/constants/user-list.const"
@@ -15,6 +16,7 @@ import { pushUrlQuery, resetUrl } from "common/helper/url.helper"
 import DropdownComponent from "common/components/dropdown/dropdown.component"
 import { GenderType } from "modules/user-list/types/user-list.type"
 import ButtonComponent from "common/components/button/button.component"
+import { SortType } from "common/components/table/types/table.type"
 
 const UserListContainer: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -22,9 +24,10 @@ const UserListContainer: FC = () => {
   const [keyword, setKeyword] = useState("")
   const [gender, setGender] = useState<GenderType>("")
   const [url, setUrl] = useState<URL>()
+  const [sort, setSort] = useState<SortType>(defaultSort)
 
   const { users, isLoading } = useFishList(
-    { page: String(page), gender },
+    { page: String(page), gender, ...sort },
     keyword
   )
 
@@ -78,6 +81,7 @@ const UserListContainer: FC = () => {
     setKeyword("")
     setPage(1)
     setGender("")
+    setSort(defaultSort)
 
     if (inputRef.current) {
       inputRef.current.value = ""
@@ -111,6 +115,9 @@ const UserListContainer: FC = () => {
         columns={COLUMNS}
         rows={users}
         rowCount={DEFAULT_LIMIT_PER_PAGE}
+        onChangeSort={(sortBy, sortOrder) => {
+          setSort({ sortBy, sortOrder })
+        }}
       />
       {Boolean(!keyword) && (
         <div className="flex">

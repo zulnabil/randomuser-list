@@ -19,7 +19,11 @@ export default function useUserList(
   const { data, error, mutate } = useSWR(path)
 
   return {
-    users: getFilteredUsers(getFormattedUsers(data?.results), keyword),
+    users: getSortedUsers(
+      getFilteredUsers(getFormattedUsers(data?.results), keyword),
+      params.sortBy,
+      params.sortOrder
+    ),
     mutate,
     isLoading: !error && !data,
     isError: error,
@@ -45,4 +49,21 @@ const getFilteredUsers = (users: any[], keyword?: string) => {
   return users.filter(
     (user: any) => user.login.username && user.login.username.includes(keyword)
   )
+}
+
+const getSortedUsers = (
+  users: any[],
+  sortBy: string,
+  sortOrder: string = "noOrder"
+) => {
+  if (!users || !users.length) return []
+
+  if (sortOrder === "noOrder") return users
+
+  return users.sort((a: any, b: any) => {
+    const aValue = sortOrder === "asc" ? a[sortBy] : b[sortBy]
+    const bValue = sortOrder === "asc" ? b[sortBy] : a[sortBy]
+
+    return aValue > bValue ? 1 : -1
+  })
 }
