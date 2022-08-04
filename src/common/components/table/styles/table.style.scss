@@ -13,16 +13,25 @@
   }
 
   th {
+    cursor: pointer;
     user-select: none;
+
+    @include rounded(0.5rem);
+  }
+
+  th:hover {
+    @include bg-color(secondary);
+  }
+
+  tbody tr:hover {
+    @include bg-color(background);
   }
 
   .icon-sort-asc {
-    cursor: pointer;
     transform: rotate(0deg) translate(0, 3px);
     transition: transform 0.2s ease-in-out;
   }
   .icon-sort-desc {
-    cursor: pointer;
     transform: rotate(-180deg) translate(0, 0);
     transition: transform 0.2s ease-in-out;
   }
