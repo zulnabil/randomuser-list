@@ -11,9 +11,10 @@ import useFishList from "modules/user-list/hooks/user-list.hook"
 import IconComponent from "common/components/icon/icon.component"
 import TextInput from "common/components/text-input/text-input.component"
 import CardComponent from "common/components/card/card.component"
-import { pushUrlQuery } from "common/helper/url.helper"
+import { pushUrlQuery, resetUrl } from "common/helper/url.helper"
 import DropdownComponent from "common/components/dropdown/dropdown.component"
 import { GenderType } from "modules/user-list/types/user-list.type"
+import ButtonComponent from "common/components/button/button.component"
 
 const UserListContainer: FC = () => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -73,9 +74,23 @@ const UserListContainer: FC = () => {
     pushUrlQuery(url, "gender", newGender)
   }
 
+  const handleResetFilter = () => {
+    setKeyword("")
+    setPage(1)
+    setGender("")
+
+    if (inputRef.current) {
+      inputRef.current.value = ""
+    }
+
+    if (!url) return
+
+    resetUrl(url)
+  }
+
   return (
     <>
-      <CardComponent className="flex flex-align-center flex-justify-between gap-16">
+      <CardComponent className="flex flex-align-stretch flex-justify-between gap-16">
         <TextInput
           onChange={handleChangeKeyword}
           leftAddon={<IconComponent color="grey">search</IconComponent>}
@@ -87,6 +102,9 @@ const UserListContainer: FC = () => {
           <option value="male">Male</option>
           <option value="female">Female</option>
         </DropdownComponent>
+        <ButtonComponent size="large" onClick={handleResetFilter}>
+          Reset
+        </ButtonComponent>
       </CardComponent>
       <TableComponent
         isLoading={isLoading}
